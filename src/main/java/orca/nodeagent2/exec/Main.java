@@ -19,7 +19,8 @@ import orca.nodeagent2.agentlib.Util;
 import org.apache.commons.logging.Log;
 
 /**
- * Hello world!
+ * This plugin executes external programs for each of the actions. 
+ * @author ibaldin
  *
  */
 public class Main implements Plugin {
@@ -38,7 +39,8 @@ public class Main implements Plugin {
 		JOIN("exec.join"),
 		LEAVE("exec.leave"),
 		MODIFY("exec.modify"),
-		RENEW("exec.renew");
+		RENEW("exec.renew"),
+		STATUS("exec.status");
 		
 		String configProp;
 		ExecCmds(String cp) {
@@ -65,7 +67,7 @@ public class Main implements Plugin {
 			
 			wd = configProperties.get(WD_PROP);
 		} catch (Exception e) {
-			e.printStackTrace();
+			throw new PluginException("Unable to initialize exec plugin: " + e);
 		}
 		log.info("Initializing plugin " + configProperties);
 	}
@@ -275,12 +277,38 @@ public class Main implements Plugin {
 		}
 	}
 
+	/**
+	 * Status script is assumed to take reservation id as its last command-line parameter
+	 */
 	public PluginReturn status(ReservationId resId, Properties schedProperties)
 			throws PluginException {
-		return new PluginReturn(resId, schedProperties);
+		
+		java.util.Properties sesp = convert(schedProperties);
+		
+		try {
+			SystemExecutor se = new SystemExecutor(log);
+		
+			ReservationId actual = resId;
+			if (schedProperties.containsKey(NEW_RESERVATIONID_PROP))
+				actual = new ReservationId(schedProperties.get(NEW_RESERVATIONID_PROP));
+			
+			String status = se.execute(getCommand(commands.get(ExecCmds.STATUS), actual), sesp, wd, (Reader)null);
+		
+			Properties retP = new Properties();
+			
+			if (getStatus(status) == PluginErrorCodes.EXCEPTION) 
+				throw new Exception("error status: " + getStatusString(status));
+			
+			retP.putAll(schedProperties);
+			retP.put(NEW_RESERVATIONID_PROP, actual.getId());
+			
+			return new PluginReturn(resId, retP);
+		} catch (Exception e) {
+			throw new PluginException("Unable to call modify script " + commands.get(ExecCmds.MODIFY) + " due to: " + e);
+		}
 	}
 	
-	public static void main(String[] argv) {
+/*	public static void main(String[] argv) {
 		Properties p = new Properties();
 		
 		p.put("exec.join", "join.sh");
@@ -307,6 +335,6 @@ public class Main implements Plugin {
 		for(Map.Entry<?, ?> e: up.entrySet()) {
 			System.out.println(e.getKey() + " ---> " + e.getValue());
 		}
-	}
+	}*/
 
 }
