@@ -1,0 +1,10 @@
+#!/bin/bash 
+
+url="http://localhost:8080/join/execplug"
+
+
+curl -k -g -H 'Content-Type: application/json' --digest --user admin:pass -X POST $url -d '{
+	"join.param": "some parameter"
+}' | python -m json.tool
+
+echo 
