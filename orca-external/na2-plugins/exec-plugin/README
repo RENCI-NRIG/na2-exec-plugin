@@ -1,6 +1,6 @@
-This is an exec plugin for NA2. It executes scripts (bash/python/etc) for each of the commands. Properties from handlers are passed in as environment variables following the convention that "some.property" becomes SOME_PROPERTY environment variable. 
+This is an exec plugin for NA2. It executes scripts (bash/python/etc) for each of the Plugin methods. Properties from handlers are passed in as environment variables following the convention that "some.property" becomes SOME_PROPERTY environment variable. 
 
-The join script is assumed to take no command line parameters. The leave/modify/renew scripts take as the last parameter the reservation id. The rest of the parameters are passed in as environment variables. 
+The join script is assumed to take no command line parameters. The leave/modify/renew/status scripts take as the last parameter the reservation id. The rest of the parameters are passed in as environment variables. 
 
 Upon return each script returns a status string (via echo) formatted as:
 
