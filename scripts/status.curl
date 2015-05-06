@@ -1,0 +1,7 @@
+#!/bin/bash 
+
+url="http://localhost:8080/status/execplug"
+
+curl -k -g -H 'Content-Type: application/json' --digest --user admin:pass $url/$1/ | python -m json.tool
+
+echo 
