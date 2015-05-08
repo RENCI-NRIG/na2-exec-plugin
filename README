@@ -12,3 +12,16 @@ The plugin is configured using the following properties: exec.join, exec.leave, 
 
 There is an optional exec.wd property that can set the working directory for the scripts if necessary.
 
+                <plugin name="execplug" >
+                        <jar>/Users/ibaldin/workspace-nodeagent2/exec-plugin/target/exec-plugin-1.0-SNAPSHOT-jar-with-dependencies.jar</jar>
+                        <mainClass>orca.nodeagent2.exec.Main</mainClass>
+                        <schedulePeriod length="3" unit="minute" />
+                        <properties>
+                                <property name="exec.join" value="/Users/ibaldin/workspace-nodeagent2/exec-plugin/scripts/join.sh" />
+                                <property name="exec.leave" value="/Users/ibaldin/workspace-nodeagent2/exec-plugin/scripts/leave.sh" />
+                                <property name="exec.modify" value="/Users/ibaldin/workspace-nodeagent2/exec-plugin/scripts/modify.sh" />
+                                <property name="exec.renew" value="/Users/ibaldin/workspace-nodeagent2/exec-plugin/scripts/renew.sh" />
+                                <property name="exec.status" value="/Users/ibaldin/workspace-nodeagent2/exec-plugin/scripts/status.sh" />
+                        </properties>
+                </plugin>
+
