@@ -5,12 +5,14 @@ Summary: nodeagent2 plugin allowing use of executable scripts
 Name: na2-exec-plugin
 Version: 0.1
 Release: @@DATE@@git%{shortcommit}
-BuildRoot: %{_builddir}/%{name}-root
 Source0: https://github.com/RENCI-NRIG/na2-exec-plugin/archive/%{commit}/%{name}-%{version}-%{shortcommit}.tar.gz
 Vendor: ExoGENI
 Packager: ExoGENI
 License: Eclipse Public License
 URL: https://github.com/RENCI-NRIG/na2-exec-plugin
+
+BuildArch: noarch
+BuildRoot: %{_builddir}/%{name}-root
 
 BuildRequires:  jdk
 Requires:       jdk
