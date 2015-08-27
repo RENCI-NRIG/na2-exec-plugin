@@ -1,0 +1,56 @@
+%global commit @@COMMIT@@
+%global shortcommit @@SHORTCOMMIT@@
+
+Summary: nodeagent2 plugin allowing use of executable scripts
+Name: na2-exec-plugin
+Version: 0.1
+Release: @@DATE@@git%{shortcommit}
+Source0: https://github.com/RENCI-NRIG/na2-exec-plugin/archive/%{commit}/%{name}-%{version}-%{shortcommit}.tar.gz
+Vendor: ExoGENI
+Packager: ExoGENI
+License: Eclipse Public License
+URL: https://github.com/RENCI-NRIG/na2-exec-plugin
+
+BuildArch: noarch
+BuildRoot: %{_builddir}/%{name}-root
+
+BuildRequires:  jdk
+Requires:       jdk
+Requires:       nodeagent2
+
+%define homedir /opt/nodeagent2
+%define exogeni_user_id geni-orca
+%define exogeni_group_id nonrenci
+# couldn't find another way to disable the brp-java-repack-jars which was called in __os_install_post
+%define __os_install_post %{nil}
+# And this is needed to get around the generated wrapper binaries...
+%global debug_package %{nil}
+
+%description
+This package contains the Exec plugin for nodeagent2.
+It allows nodeagent2 to call scripts for its various operations.
+
+%prep
+%setup -q -n %{name}-%{version}-%{shortcommit}
+
+%build
+LANG=en_US.UTF-8 mvn clean package
+
+%install
+# Prep the install location.
+rm -rf $RPM_BUILD_ROOT
+mkdir -p $RPM_BUILD_ROOT%{homedir}
+mkdir -p $RPM_BUILD_ROOT%{homedir}/plugins
+
+cp -R target/exec-plugin-1.0-SNAPSHOT-jar-with-dependencies.jar $RPM_BUILD_ROOT%{homedir}/plugins/%{name}.jar
+
+%clean
+rm -rf $RPM_BUILD_ROOT
+
+%files
+%defattr(-, %{exogeni_user_id}, %{exogeni_group_id})
+%{homedir}/plugins/%{name}.jar
+
+%changelog
+*Thu Aug 06 2015 Victor J. Orlikowski <vjo@cs.duke.edu>
+- Packaging na2-exec-plugin
