@@ -15,6 +15,12 @@
     <na2.version>0.1-SNAPSHOT</na2.version>
   </properties>
 
+        <scm>
+                <connection>scm:git:https://github.com/RENCI-NRIG/na2-exec-plugin.git</connection>
+                <developerConnection>scm:git:https://github.com/RENCI-NRIG/na2-exec-plugin.git</developerConnection>
+                <url>https://github.com/RENCI-NRIG/no2-exec-plugin</url>
+        </scm>
+
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
