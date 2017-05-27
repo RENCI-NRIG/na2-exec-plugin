@@ -1,4 +1,4 @@
-package orca.nodeagent2.exec;
+package org.renci.nodeagent2.exec;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
-import orca.nodeagent2.agentlib.Util;
+import org.renci.nodeagent2.agentlib.Util;
 
 import org.apache.commons.logging.Log;
 

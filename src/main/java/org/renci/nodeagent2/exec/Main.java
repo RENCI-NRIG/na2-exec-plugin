@@ -1,4 +1,4 @@
-package orca.nodeagent2.exec;
+package org.renci.nodeagent2.exec;
 
 import java.io.Reader;
 import java.util.ArrayList;
@@ -8,13 +8,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import orca.nodeagent2.agentlib.Plugin;
-import orca.nodeagent2.agentlib.PluginErrorCodes;
-import orca.nodeagent2.agentlib.PluginException;
-import orca.nodeagent2.agentlib.PluginReturn;
-import orca.nodeagent2.agentlib.Properties;
-import orca.nodeagent2.agentlib.ReservationId;
-import orca.nodeagent2.agentlib.Util;
+import org.renci.nodeagent2.agentlib.Plugin;
+import org.renci.nodeagent2.agentlib.PluginErrorCodes;
+import org.renci.nodeagent2.agentlib.PluginException;
+import org.renci.nodeagent2.agentlib.PluginReturn;
+import org.renci.nodeagent2.agentlib.Properties;
+import org.renci.nodeagent2.agentlib.ReservationId;
+import org.renci.nodeagent2.agentlib.Util;
 
 import org.apache.commons.logging.Log;
 

@@ -2,7 +2,7 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>orca.node-agent2</groupId>
+  <groupId>org.renci.node-agent2</groupId>
   <artifactId>exec-plugin</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>jar</packaging>
@@ -12,7 +12,7 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <na2.version>0.1-SNAPSHOT</na2.version>
+    <na2.version>0.2.1-SNAPSHOT</na2.version>
   </properties>
 
         <scm>
@@ -29,7 +29,7 @@
 			<version>3.8.1</version>
 		</dependency>
 		<dependency>
-			<groupId>orca.node-agent2</groupId>
+			<groupId>org.renci.node-agent2</groupId>
 			<artifactId>agentlib</artifactId>
 			<version>${na2.version}</version>
 		</dependency>
@@ -50,7 +50,7 @@
 				<configuration>
 					<archive>
 						<manifest>
-							<mainClass>orca.nodeagent2.exec.Main</mainClass>
+							<mainClass>org.renci.nodeagent2.exec.Main</mainClass>
 						</manifest>
 					</archive>
 					<descriptorRefs>
