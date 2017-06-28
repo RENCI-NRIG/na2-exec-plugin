@@ -56,7 +56,7 @@ public class Main implements Plugin {
 			throws PluginException {
 		try {
 			// this is how you get hold of the logger
-			log = Util.getLog("exec-plugin");
+			log = Util.getLog(this.getClass().getName());
 			
 			for(ExecCmds ec: ExecCmds.values()) {
 				if (!configProperties.containsKey(ec.getConfigProp()) || 
