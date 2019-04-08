@@ -12,7 +12,7 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <na2.version>0.2.1-SNAPSHOT</na2.version>
+    <na2.version>0.2.2</na2.version>
   </properties>
 
         <scm>
